@@ -21,9 +21,7 @@ function shorten(url, cb) {
         cb(err, res.id);
       });
     });
-
 }
-
 
 function get(url, cb) {
   var params, getUrlReq;
@@ -43,9 +41,7 @@ function get(url, cb) {
           cb(err, res.longUrl);
         });
       });
-
 }
-
 
 module.exports = {
   shorten: shorten,
