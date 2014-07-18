@@ -2,6 +2,10 @@
 
 url-shortening abstraction that uses google's url-shortener [api](https://developers.google.com/url-shortener/)
 
+### Installation
+
+    npm install short-url
+
 
 ### Usage
 
