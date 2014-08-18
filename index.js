@@ -10,7 +10,7 @@ function shorten(url, cb) {
     .discover('urlshortener', 'v1')
     .execute(function(err, client) {
       if(err) {
-        console.log(err);
+        process.nextTick(function(){cb(err, null);});
         return;
       }
 
@@ -18,7 +18,7 @@ function shorten(url, cb) {
       shortUrlReq = client.urlshortener.url.insert(params);
 
       shortUrlReq.execute(function(err, res) {
-        cb(err, res.id);
+        process.nextTick(function(){cb(err, res && res.id);});
       });
     });
 }
@@ -30,7 +30,7 @@ function get(url, cb) {
       .discover('urlshortener', 'v1')
       .execute(function(err, client) {
         if (err) {
-          console.log(err);
+          process.nextTick(function(){cb(err, null);});
           return;
         }
 
@@ -38,7 +38,7 @@ function get(url, cb) {
         getUrlReq = client.urlshortener.url.get(params);
 
         getUrlReq.execute(function(err, res) {
-          cb(err, res.longUrl);
+          process.nextTick(function(){cb(err, res && res.longUrl);});
         });
       });
 }
